@@ -1,14 +1,3 @@
-# Conditions:
-#   CustomDomainNameSet:
-#     Fn::Not:
-#       [
-#         Fn::Equals:
-#           [
-#             "${self:custom.domainName.${self:provider.stage},'not-set'}",
-#             "not-set",
-#           ],
-#       ]
-
 Resources:
   SomeS3Bucket:
     Type: AWS::S3::Bucket

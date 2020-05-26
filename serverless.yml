@@ -38,5 +38,5 @@ functions:
     handler: some-lambda.handler
 
 resources:
-  - ${file(s3-bucket.yml)}
+  # - ${file(s3-bucket.yml)}
   - ${file(cloud-front.yml)}
