@@ -1,0 +1,17 @@
+{
+	"license": "MIT",
+	"name": "serverless-appsync-plugin-resolve-error",
+	"version": "1.0.0",
+	"scripts": {
+		"start": "serverless offline start"
+	},
+	"dependencies": {
+		"cfn-resolver-lib": "^1.1.5"
+	},
+	"devDependencies": {
+		"serverless": "^1.70.1",
+		"serverless-appsync-plugin": "^1.2.0",
+		"serverless-appsync-simulator": "^0.4.0",
+		"serverless-offline": "^6.1.4"
+	}
+}

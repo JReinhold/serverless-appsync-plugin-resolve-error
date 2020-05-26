@@ -1,0 +1,27 @@
+# Conditions:
+#   CustomDomainNameSet:
+#     Fn::Not:
+#       [
+#         Fn::Equals:
+#           [
+#             "${self:custom.domainName.${self:provider.stage},'not-set'}",
+#             "not-set",
+#           ],
+#       ]
+
+Resources:
+  SomeS3Bucket:
+    Type: AWS::S3::Bucket
+  # This policy allows CloudFront to access Front-end S3 bucket
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref SomeS3Bucket
+      PolicyDocument:
+        Statement:
+          - Action:
+              - s3:GetObject
+            Effect: Allow
+            Resource: !Join ["", ["arn:aws:s3:::", !Ref SomeS3Bucket, "/*"]]
+            Principal:
+              CanonicalUser: !GetAtt CloudFrontOriginAccessIdentity.S3CanonicalUserId

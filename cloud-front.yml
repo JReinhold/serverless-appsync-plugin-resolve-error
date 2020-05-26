@@ -1,0 +1,14 @@
+Conditions:
+  SomeCondition:
+    Fn::Equals: ["true", "true"]
+Resources:
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Aliases:
+          - !If [SomeCondition, "somedomain.com", "someotherdomain.com"]
+          # - "somedomain.com"
+        Enabled: true
+  CloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
