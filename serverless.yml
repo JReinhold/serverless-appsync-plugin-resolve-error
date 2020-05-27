@@ -1,4 +1,4 @@
-service: b2b-trade-activation
+service: appsync-simulator-error-repro
 
 plugins:
   - serverless-appsync-plugin
